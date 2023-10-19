@@ -36,27 +36,15 @@
         let getRec = document.querySelector(".fa-rectangle-xmark");
         let getLine = document.querySelector(".fa-grip-lines-vertical");
         let cTool;
+        
+        //let topHeight = canvasBoard.getBoundingClientRect
         //tool.fillStyle = 'red';
         //tool.fillRect(0,0,300,300);   // make the rectangle box of specified dimensions
       //  tool.strokeStyle = "blue";     // make the border blue
-       // tool.strokeRect(20,20,400,400);  // 
-
-   //     body.addEventListener("mousedown",function(e){ 
-         //   alert("Mouse pressed"); // starting point where we know the mouse is pressed to draw something
-     //    let Xpos = e.clientX;
-      //   let Ypos = e.clientY; // taking the x and y position wherevere the user press the mouse
-        // console.log("press:" , Xpos , Ypos);
-        //})
-      //  body.addEventListener("mouseup", function(e){  // to find the ending point
-        //    alert("Mouse release");
-      //  let Xpos  = e.clientX;
-       // let Ypos = e.clientY; // capturing the x and y position wherever the use release the mouse
-        //console.log("release:" , Xpos , Ypos);  
-        //use inspect --> console to see the value of console.log
-       // })
-
-
+       // tool.strokeRect(20,20,400,400);  
        // tool change logic
+       console.log(canvasBoard.getBoundingClientRect()); // returns a DOMRect object providing information about size of an element and its position
+       let topHeight = canvasBoard.getBoundingClientRect().top;
        getRec.addEventListener("click", function(){
         cTool = "getRec";
        })
@@ -66,16 +54,16 @@
        })
 
         //Making of rectangle
-        
+
         let ix,iy,fx,fy;
         body.addEventListener("mousedown", function(e){
           
             ix = e.clientX;
-            iy = e.clientY;
+            iy = e.clientY - topHeight ;
         })
         body.addEventListener("mouseup" , function(e){
             fx = e.clientX;
-            fy = e.clientY;
+            fy = e.clientY - topHeight;
             let height = fy - iy;
             let width = fx - ix;
             if(cTool == "getRec"){
