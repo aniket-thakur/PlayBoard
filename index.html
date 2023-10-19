@@ -66,9 +66,10 @@
        })
 
         //Making of rectangle
+        
         let ix,iy,fx,fy;
         body.addEventListener("mousedown", function(e){
-          //  alert("mouse down")
+          
             ix = e.clientX;
             iy = e.clientY;
         })
@@ -84,8 +85,7 @@
                 tool.moveTo(ix,iy); // sets the starting point 
                 tool.lineTo(fx,fy); //creates a straight line from the current drawing position as set by moveTo() 
                 tool.stroke(); //draw the outlines that have been shaped by the moveTo and lineTo
-            }
-            
+            }   
         })
     </script>
 </body>
