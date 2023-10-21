@@ -8,9 +8,8 @@
     <div id = red></div>
     <div id = blue></div>
     <div id= green></div>
-    <div i class="fa-regular fa-rectangle-xmark"> </i></div>  <!-- rectangle-->
-    <div i class="fa-solid fa-grip-lines-vertical"></i></div>  <!-- line -->
-    <div i class="fa-solid fa-pencil"></i></div>
+   
+    <div i class="fa-solid fa-pencil"></i></div> <!-- pencil-->
     
 </div>
     <title>Document</title>
@@ -80,74 +79,19 @@
         canvasBoard.width = window.innerWidth;
         let tool = canvasBoard.getContext("2d");   // gives area to draw
         let body = document.querySelector("body"); 
-        let getRec = document.querySelector(".fa-rectangle-xmark");
-        let getLine = document.querySelector(".fa-grip-lines-vertical");
         let getPencil = document.querySelector(".fa-pencil");
-        let cTool;
-        
-        //let topHeight = canvasBoard.getBoundingClientRect
-        //tool.fillStyle = 'red';
-        //tool.fillRect(0,0,300,300);   // make the rectangle box of specified dimensions
-      //  tool.strokeStyle = "blue";     // make the border blue
-       // tool.strokeRect(20,20,400,400);  
+
+
 
        // *****tool change logic**********
     
        console.log(canvasBoard.getBoundingClientRect()); // returns a DOMRect object providing information about size of an element and its position
        let topHeight = canvasBoard.getBoundingClientRect().top;
-       getRec.addEventListener("click", function(){
-        cTool = "getRec";
-       })
-
-       getLine.addEventListener("click",function(){
-        cTool = "getLine";
-       })
+      
        getPencil.addEventListener("click", function(){
         cTool = "getPencil";
        })
-
-
-        //**************Making of rectangle***************
-
-        let ix,iy,fx,fy;
-        let drawingmode = false;
-        body.addEventListener("mousedown", function(e){
-               ix = e.clientX;
-                 iy = e.clientY - topHeight;
-                 drawingmode = true;
-             })
-        body.addEventListener("mousemove",function(e){
-            if(cTool == "getpencil"){
-                if(drawingmode == false){
-                   return;
-                }
-                fx = e.clientX;
-                fy = e.clientY - topHeight;
-                tool.beginPath();
-                tool.moveTo(ix,iy);
-                tool.lineTo(fx,fy);
-                tool.stroke();
-                ix = fx;
-                iy = fy;
-               } 
-        })
-        body.addEventListener("mouseup" , function(e){
-            fx = e.clientX;
-           fy = e.clientY - topHeight;
-            let height = fy - iy;
-           let width = fx - ix;
-          let drawingmode = false;
-
-            if(cTool == "getRec"){
-                tool.strokeRect(ix,iy,width,height);
-            }
-            else if(cTool == "getLine"){
-                tool.beginPath();   //begin a new path or reset the current path.
-                tool.moveTo(ix,iy); // sets the starting point 
-                tool.lineTo(fx,fy); //creates a straight line from the current drawing position as set by moveTo() 
-                tool.stroke(); //draw the outlines that have been shaped by the moveTo and lineTo
-           }
-         })
+ 
         // ****************change color of the storkes************************
         let redColor = document.querySelector("#red");  // red, green, blue button
         let greenColor = document.querySelector("#green");  
@@ -166,29 +110,29 @@
             
         })
         // *****************pencil logic*********************
-        
-       //let drawingmode = false;
-    //    body.addEventListener("mousedown", function(e){
-      //    ix = e.clientX;
-      //      iy = e.clientY - topHeight;
-       //     drawingmode = true;
-     //   })
-     //   body.addEventListener("mouseup", function(){
-      //      drawingmode = false;
-     //   })
-     //  body.addEventListener("mousemove", function(e){
-      //     if(drawingmode == false){
-     //           return;
-     //       }
-     //       fx = e.clientX;
-      //      fy = e.clientY - topHeight;
-     //      tool.beginPath();
-      //      tool.moveTo(ix,iy);
-       //     tool.lineTo(fx, fy);
-       //     tool.stroke();
-       //     ix = fx;
-      //      iy = fy;
-      //  })
+        let ix,iy,fx,fy;
+       let drawingmode = false;
+        body.addEventListener("mousedown", function(e){
+          ix = e.clientX;
+           iy = e.clientY - topHeight;
+            drawingmode = true;
+       })
+        body.addEventListener("mouseup", function(){
+            drawingmode = false;
+        })
+       body.addEventListener("mousemove", function(e){
+           if(drawingmode == false){
+                return;
+            }
+            fx = e.clientX;
+            fy = e.clientY - topHeight;
+          tool.beginPath();
+           tool.moveTo(ix,iy);
+            tool.lineTo(fx, fy);
+            tool.stroke();
+            ix = fx;
+           iy = fy;
+      })
     </script>
 </body>
 </html>
