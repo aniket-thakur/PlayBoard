@@ -55,35 +55,23 @@
 
     <script>
         
-        let colorSelect = document.querySelector(".color-area");
-        <!-- colorSelect.style.backgroundColor = "pink"; -->
-        let color;
-        let red = document.querySelector("#red");
-        let green = document.querySelector("#green");
-        let blue = document.querySelector("#blue");
-        red.addEventListener("click", function(){
+        let colorSelect = document.querySelector(".color-area");  // selecting the specific area
+        let redColor = document.querySelector("#red");  // red, green, blue button
+        let greenColor = document.querySelector("#green");  
+        let blueColor = document.querySelector("#blue");
+        redColor.addEventListener("click", function(){
             colorSelect.style.backgroundColor = "red";
             
         })
-        green.addEventListener("click", function(){
+        greenColor.addEventListener("click", function(){
             colorSelect.style.backgroundColor = "green";
             
         })
-        blue.addEventListener("click", function(){
+        blueColor.addEventListener("click", function(){
             colorSelect.style.backgroundColor = "blue";
             
         })
-        colorSelect.addEventListener("click", function(){
-            if(color == "red"){
-                colorSelect.style.backgroundColor = "red";
-            }
-            else if(color == "green"){
-                colorSelect.style.backgroundColor = "green";
-            }
-            else if(color = "blue"){
-                colorSelect.style.backgroundColor = "blue";
-            }
-        })
+
     </script>
 </body>
 </html>

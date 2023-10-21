@@ -4,23 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <i class="fa-regular fa-rectangle-xmark"></i>  <!-- rectangle-->
-    <i class="fa-solid fa-grip-lines-vertical"></i>  <!-- line -->
+    <div class = "ipallet">
+    <div id = red></div>
+    <div id = blue></div>
+    <div id= green></div>
+    <div i class="fa-regular fa-rectangle-xmark"> </i></div>  <!-- rectangle-->
+    <div i class="fa-solid fa-grip-lines-vertical"></i></div>  <!-- line -->
+    <div i class="fa-solid fa-pencil"></i></div>
+    
+</div>
     <title>Document</title>
 </head>
 <body>
     <style>
+        h1{
+            text-align: center;
+        }
         body{
             margin : 0px;
+            background-color: lightgoldenrodyellow;
         }
         .fa-regular{
             font-size: 2rem;
-            margin-left : 550px;
-            margin-top: 15px;
+            margin-left: 30px;
         }
         .fa-solid{
             font-size : 2rem;
-            margin-left: 42px;
+            margin-left: 15px;
+        }
+        .ipallet{
+            border: 2px solid;
+            height: 1.7cm;
+            display : flex;
+            width : 100%;
+            justify-content:center;
+            align-items: center;
+            justify-items: center;
+            background-color: lightslategray;
+        }
+        #red{
+            border : 1px solid;
+            height : 1cm;
+            width: 1cm;
+            margin-left: 10px;
+            border-radius : 50%;
+             text-align: center;
+            background-color:red
+        }
+        #green{
+            border : 1px solid;
+            height: 1cm;
+            width: 1cm;
+            margin-left: 10px;
+            background-color: green;
+            border-radius : 90%;
+            text-align: center;
+        }
+        #blue{
+            border : 1px solid;
+            height : 1cm;
+            width: 1cm;
+            margin-left: 10px;
+            background-color: blue;
+            border-radius : 90%;
+            text-align: center;
         }
     </style>
     <h1>Worky??</h1>
@@ -31,10 +78,11 @@
         let canvasBoard = document.querySelector("canvas"); // give tool to draw on a canvas
         canvasBoard.height = window.innerHeight;
         canvasBoard.width = window.innerWidth;
-        let tool = canvasBoard.getContext("2d"); 
+        let tool = canvasBoard.getContext("2d");   // gives area to draw
         let body = document.querySelector("body"); 
         let getRec = document.querySelector(".fa-rectangle-xmark");
         let getLine = document.querySelector(".fa-grip-lines-vertical");
+        let getPencil = document.querySelector(".fa-pencil");
         let cTool;
         
         //let topHeight = canvasBoard.getBoundingClientRect
@@ -42,7 +90,9 @@
         //tool.fillRect(0,0,300,300);   // make the rectangle box of specified dimensions
       //  tool.strokeStyle = "blue";     // make the border blue
        // tool.strokeRect(20,20,400,400);  
-       // tool change logic
+
+       // *****tool change logic**********
+    
        console.log(canvasBoard.getBoundingClientRect()); // returns a DOMRect object providing information about size of an element and its position
        let topHeight = canvasBoard.getBoundingClientRect().top;
        getRec.addEventListener("click", function(){
@@ -52,29 +102,93 @@
        getLine.addEventListener("click",function(){
         cTool = "getLine";
        })
+       getPencil.addEventListener("click", function(){
+        cTool = "getPencil";
+       })
 
-        //Making of rectangle
+
+        //**************Making of rectangle***************
 
         let ix,iy,fx,fy;
+        let drawingmode = false;
         body.addEventListener("mousedown", function(e){
-          
-            ix = e.clientX;
-            iy = e.clientY - topHeight ;
+               ix = e.clientX;
+                 iy = e.clientY - topHeight;
+                 drawingmode = true;
+             })
+        body.addEventListener("mousemove",function(e){
+            if(cTool == "getpencil"){
+                if(drawingmode == false){
+                   return;
+                }
+                fx = e.clientX;
+                fy = e.clientY - topHeight;
+                tool.beginPath();
+                tool.moveTo(ix,iy);
+                tool.lineTo(fx,fy);
+                tool.stroke();
+                ix = fx;
+                iy = fy;
+               } 
         })
         body.addEventListener("mouseup" , function(e){
             fx = e.clientX;
-            fy = e.clientY - topHeight;
+           fy = e.clientY - topHeight;
             let height = fy - iy;
-            let width = fx - ix;
+           let width = fx - ix;
+          let drawingmode = false;
+
             if(cTool == "getRec"){
                 tool.strokeRect(ix,iy,width,height);
-            }else if(cTool == "getLine"){
+            }
+            else if(cTool == "getLine"){
                 tool.beginPath();   //begin a new path or reset the current path.
                 tool.moveTo(ix,iy); // sets the starting point 
                 tool.lineTo(fx,fy); //creates a straight line from the current drawing position as set by moveTo() 
                 tool.stroke(); //draw the outlines that have been shaped by the moveTo and lineTo
-            }   
+           }
+         })
+        // ****************change color of the storkes************************
+        let redColor = document.querySelector("#red");  // red, green, blue button
+        let greenColor = document.querySelector("#green");  
+        let blueColor = document.querySelector("#blue");
+
+        redColor.addEventListener("click", function(){
+            tool.strokeStyle = "red";
+            
         })
+        greenColor.addEventListener("click", function(){
+            tool.strokeStyle = "green";
+            
+        })
+        blueColor.addEventListener("click", function(){
+            tool.strokeStyle = "blue";
+            
+        })
+        // *****************pencil logic*********************
+        
+       //let drawingmode = false;
+    //    body.addEventListener("mousedown", function(e){
+      //    ix = e.clientX;
+      //      iy = e.clientY - topHeight;
+       //     drawingmode = true;
+     //   })
+     //   body.addEventListener("mouseup", function(){
+      //      drawingmode = false;
+     //   })
+     //  body.addEventListener("mousemove", function(e){
+      //     if(drawingmode == false){
+     //           return;
+     //       }
+     //       fx = e.clientX;
+      //      fy = e.clientY - topHeight;
+     //      tool.beginPath();
+      //      tool.moveTo(ix,iy);
+       //     tool.lineTo(fx, fy);
+       //     tool.stroke();
+       //     ix = fx;
+      //      iy = fy;
+      //  })
     </script>
 </body>
 </html>
