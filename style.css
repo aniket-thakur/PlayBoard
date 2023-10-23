@@ -1,0 +1,163 @@
+body {
+    margin: 0px;
+
+}
+
+.toolbar {
+    border: 2px solid;
+    background-color: lightgoldenrodyellow;
+    display: flex;
+    width: 90vw;
+    height: 90px;
+    margin: 0 auto;
+    /* margin for giving equal spaciing from all side  */
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.tool {
+    margin-left: 30px;
+}
+
+.tool-img {
+    height: 50px;
+}
+
+/*  colors logic
+     */
+.color-container {
+    display: flex;
+    margin: 0 auto;
+    width: 80vw;
+    height: 80px;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.color {
+    height: 50px;
+    width: 50px;
+    margin-left: 30px;
+    border-radius: 50%;
+}
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.green {
+    background-color: green;
+
+
+}
+
+/* options style */
+
+.size-change {
+
+    border-radius: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    display: none;
+}
+
+.size1 {
+    border: 1px solid;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+}
+
+.size2 {
+    border: 1px solid;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+}
+
+.size3 {
+    border: 1px solid;
+    height: 11px;
+    width: 11px;
+    border-radius: 50%;
+}
+
+.size4 {
+    border: 1px solid;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+}
+
+.size {
+    background-color: lightslategray;
+}
+
+.fa-regular {
+    font-size: 2rem;
+    margin-left: 30px;
+}
+
+.fa-solid {
+    font-size: 2rem;
+    margin-left: 15px;
+}
+
+/* sticky notes css logic */
+.close {
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    background-color: hsl(0, 89%, 48%);
+    border-radius: 50%;
+}
+
+.minimize {
+    height: 15px;
+    width: 15px;
+    background-color: lightgreen;
+    margin-right: 6px;
+    border-radius: 50%;
+}
+
+.sticky {
+
+    width: 175px;
+    height: 175px;
+    position: fixed;
+    top: 50%;
+    /* Center the element vertically */
+    left: 50%;
+    /* Center the element horizontally */
+    transform: translate(-50%, -50%);
+    /* Center the element precisely */
+}
+
+.navbar {
+    background-color: azure;
+    display: flex;
+    height: 20px;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.textArea {
+
+    width: 98.5%;
+    height: 100%;
+    outline: none;
+    border: none;
+    background-color: lightyellow;
+    border-top: 1px rgb(104, 77, 9);
+
+}

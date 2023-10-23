@@ -2,74 +2,72 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 
 <body>
-    <style>
-        .toolbar {
-            border: 2px solid;
-            background-color: lightgoldenrodyellow;
-            display: flex;
-            width : 80vw;
-            height : 80px;
-            margin: 0 auto;   /* margin for giving equal spaciing from all side  */
-            justify-content: space-evenly;
-            align-items: center;
-        }
 
-        .tool {
-            margin-left: 30px;
-        }
-
-        .tool-img {
-            height: 50px;
-        }
-        .color-container{
-            display: flex;
-            margin : 0 auto;
-            width : 80vw;
-            height: 80px;
-            align-items: center;
-            margin-left: 30px;
-        }
-        .color {
-            height: 50px;
-            width: 50px;
-            margin-left: 30px;
-            border-radius: 50%;
-        }
-
-        .red {
-            background-color: red;
-        }
-
-        .blue {
-            background-color: blue;
-        }
-
-        .green {
-            background-color: green;
-        }
-    </style>
     <div class="toolbar">
-        <div class="tool">
+        <div class="tool" id="pencil">
             <img src="./icons/pencil.png" alt="" class="tool-img">
+            <div class='size-change'>
+                <div class="size1 size "></div>
+                <div class="size2 size "></div>
+                <div class="size3 size "></div>
+                <div class="size4 size "></div>
+            </div>
         </div>
-        <div class="tool">
+        <div class="tool" id="eraser">
             <img src="./icons/eraser.png" alt="" class="tool-img">
+            <div class='size-change'>
+                <div class="size1 size "></div>
+                <div class="size2 size "></div>
+                <div class="size3 size "></div>
+                <div class="size4 size "></div>
+            </div>
         </div>
-        <div class="tool">
-            <img src="./icons/download.png" alt="" class="tool-img">
+        <div class="tool" id="rec">
+            <i class="fa-regular fa-rectangle-xmark" alt="" class="tool-img"></i>
+            <div class='size-change'>
+                <div class="size1 size "></div>
+                <div class="size2 size "></div>
+                <div class="size3 size "></div>
+                <div class="size4 size "></div>
+            </div>
         </div>
+        <div class="tool" id="line">
+            <i class="fa-solid fa-grip-lines-vertical" alt="" class="tool-img"></i>
+            <div class='size-change'>
+                <div class="size1 size "></div>
+                <div class="size2 size "></div>
+                <div class="size3 size "></div>
+                <div class="size4 size "></div>
+            </div>
+        </div>
+
+        <div class="tool" id ="notes">
+            <img src="./icons/sticky-note.png" alt="" class="tool-img">
+        </div>
+
         <div class="color-container">
             <div class="color red"></div>
             <div class="color blue"></div>
             <div class="color green"></div>
         </div>
+
+
     </div>
+    <canvas></canvas>
+    <script src="setup.js"></script>
+    <script src="toolmenu.js"></script>
+    <script src="toolselect.js"></script>
+    <script src="colors.js"></script>
+    <script src="sticky_notes.js"></script>
 </body>
 
 </html>
